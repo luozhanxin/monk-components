@@ -23,7 +23,8 @@
     "build": "npm run clean && npm run build:esm && npm run build:umd",
     "build:esm": "rollup --config build/rollup.esm.config.js",
     "build:umd": "rollup --config build/rollup.umd.config.js",
-    "test:unit": "vitest --environment jsdom --root src/",
+    "prepublishOnly": "npm run build",
+    "test:unit": "vitest --environment jsdom --root tests/",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
