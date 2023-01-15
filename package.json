@@ -1,6 +1,6 @@
 {
   "name": "monk-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/monk-components.umd.js",
   "module": "dist/monk-components.esm.js",
   "types": "dist/index.d.ts",
@@ -23,8 +23,9 @@
     "build": "npm run clean && npm run build:esm && npm run build:umd",
     "build:esm": "rollup --config build/rollup.esm.config.js",
     "build:umd": "rollup --config build/rollup.umd.config.js",
-    "prepublishOnly": "npm run build",
-    "test:unit": "vitest --environment jsdom --root tests/",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "test:watch": "vitest --environment jsdom --root tests/",
+    "test": "vitest run --environment jsdom --root tests/",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
