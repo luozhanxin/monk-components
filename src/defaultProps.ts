@@ -87,10 +87,26 @@ export const textDefaultProps: TextComponentProps = {
   ...commonDefaultProps,
 };
 
+export const imageDefaultProps = {
+  imageSrc: "",
+  ...commonDefaultProps,
+};
+
 export const isEditingProp = {
   isEditing: {
     type: Boolean,
     default: false,
+  },
+};
+
+// this contains all default props for all the components
+// useful for inserting new component into the store
+export const componentsDefaultProps = {
+  "m-text": {
+    props: textDefaultProps,
+  },
+  "m-image": {
+    props: imageDefaultProps,
   },
 };
 
@@ -102,14 +118,21 @@ export const isEditingProp = {
  * @param props
  * @returns
  */
-export const transformToComponentProps = <T extends {}>(props: T) => {
+export const transformToComponentProps = (
+  props: { [key: string]: any },
+  extraProps?: { [key: string]: any }
+) => {
   const mapProps = mapValues(props, (item) => {
     return {
-      type: (item as any).constructor as StringConstructor,
+      type: item.constructor,
       default: item,
     };
   });
-  return { ...mapProps, ...isEditingProp };
+  if (extraProps) {
+    return { ...mapProps, ...extraProps };
+  } else {
+    return mapProps;
+  }
 };
 
 export const textStylePropNames = without(
@@ -118,3 +141,5 @@ export const textStylePropNames = without(
   "url",
   "text"
 );
+
+export default componentsDefaultProps;

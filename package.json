@@ -1,6 +1,6 @@
 {
   "name": "monk-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/monk-components.umd.js",
   "module": "dist/monk-components.esm.js",
   "types": "dist/index.d.ts",

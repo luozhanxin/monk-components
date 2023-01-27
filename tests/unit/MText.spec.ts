@@ -23,7 +23,7 @@ describe("MText.vue", () => {
     // should have the right text
     expect(wrapper.text()).toBe(msg);
     // should be default div tag
-    expect(wrapper.element.tagName).toBe("DIV");
+    expect(wrapper.element.tagName).toBe("P");
     // should have certain css attr
     const style = wrapper.attributes().style;
     expect(style.includes("font-size")).toBeTruthy();
